@@ -6,14 +6,6 @@ Trains a fully connected network on MNIST, attacks it with FGSM, then formally
 certifies per-image robustness using the DeepPoly abstract domain from
 Singh et al., POPL 2019.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  100 images   94 correct   73 attacked   31 certified robust    │
-├──────────┬──────────┬──────────┬──────────┬──────────┬──────────┤
-│ [7] → 3  │ [2] → 2  │ [9] → 4  │ [0] → 0  │ [5] → 5  │  ...    │
-│ ATTACKED │  ROBUST  │ ATTACKED │ UNVERIF. │  ROBUST  │         │
-└──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
-```
 
 ---
 
