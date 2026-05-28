@@ -82,8 +82,48 @@ src/show.cpp                Raylib window, scrollable card grid
 
 ---
 
+## Python adversarial training
+
+A Python implementation of PGD adversarial training (Madry et al. 2018)
+with DeepPoly certification for a CNN on MNIST.
+
+**Architecture:** `Conv(1→16,4,s2)→ReLU→Conv(16→32,4,s2)→ReLU→Dense(1568→64)→ReLU→Dense(64→10)`
+
+**Min-max game:** Defender (θ) trains against an Attacker (δ) that maximises
+loss via PGD. Per-batch PGD-7 during training, PGD-40 for evaluation.
+DeepPoly certification provides sound per-image robustness guarantees.
+
+### requirements
+
+```
+torch, numpy, matplotlib
+```
+
+### usage
+
+```bash
+python3 adversarial_game.py <n_train> <n_test> <epsilon>
+```
+
+Defaults: 5000 train / 200 test / ε=0.10. Outputs accuracy, PGD-40 attack
+success, DeepPoly certified robustness, and a plot saved to
+`training_results.png`.
+
+### files
+
+```
+adversarial_game.py   CNN + PGD training + evaluation + DeepPoly verifier
+training_results.png  saved plot (attack curve + test breakdown)
+```
+
+---
+
 ## reference
 
 Gagandeep Singh, Timon Gehr, Markus Püschel, Martin Vechev.
 *An Abstract Domain for Certifying Neural Networks.*
 POPL 2019. https://doi.org/10.1145/3290354
+
+Aleksander Madry, Aleksandar Makelov, Ludwig Schmidt, Dimitris Tsipras, Adrian Vladu.
+*Towards Deep Learning Models Resistant to Adversarial Attacks.*
+ICLR 2018. https://arxiv.org/abs/1706.06083
