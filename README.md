@@ -1,3 +1,4 @@
+# NOTE: The main repo is on https://github.com/jeetrex17/deeppoly
 # DeepPoly
 
 Adversarial robustness certification for neural networks using the DeepPoly abstract domain (Singh et al., POPL 2019).
